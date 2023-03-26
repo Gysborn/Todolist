@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   front:
-    image: sermalenk/skypro-front:lesson-37
+    image: sermalenk/skypro-front:lesson-38
     ports:
      - "80:80"
     depends_on:
@@ -28,6 +28,18 @@ services:
     environment:
       DB_HOST: postgres
     command: python manage.py migrate
+
+  bot:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrations:
+        condition: service_completed_successfully
+    env_file: .env
+    environment:
+      DB_HOST: postgres
+    command: python manage.py runbot
 
   postgres:
     image: postgres:15.1-alpine

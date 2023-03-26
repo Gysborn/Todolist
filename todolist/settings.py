@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'core',
     'goals',
     'drf_spectacular',
+    'bot',
 ]
 if DEBUG:
     INSTALLED_APPS += [
@@ -156,6 +157,7 @@ SOCIAL_AUTH_VK_EXTRA_DATA = [
 ]
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/logged-in/'
 SOCIAL_AUTH_USER_MODEL = 'core.User'
+
 
 
 REST_FRAMEWORK = {
