@@ -99,7 +99,7 @@ class GoalCommentSerializer(ModelSerializer):
 class BoardCreateSerializer(ModelSerializer):
     class Meta:
         model = Board
-        read_only_fields = ("id", "created", "updated")
+        read_only_fields = ("id", "created", "updated", "is_deleted")
         fields = "__all__"
 
 

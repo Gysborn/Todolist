@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - 'main'
-      - 'dev_37'
+      - 'dev_38'
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/diploma:homework-37
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/diploma:homework-38
 
   deploy:
     needs: build

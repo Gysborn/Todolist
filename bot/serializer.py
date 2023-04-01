@@ -3,7 +3,6 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.serializers import ModelSerializer
 
 from bot.models import TgUser
-from core.models import User
 
 
 class TgUserSerializer(ModelSerializer):

@@ -20,3 +20,4 @@ class TgUser(models.Model):
         print(f'Код верификации: {self.verification_code}')
         return self.verification_code
 
+
