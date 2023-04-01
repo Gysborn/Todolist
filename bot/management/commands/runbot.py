@@ -30,17 +30,25 @@ class Command(BaseCommand):
         :param msg: объект Message
         :return: None
         """
-        cat = self.cartridge[msg.chat.id]['choice_cat']
-        cats = self.cartridge[msg.chat.id]['cats']
-        user_id = self.cartridge[msg.chat.id]['user_id']
-        goal = Goal(title=msg.text, category_id=cats[cat], user_id=user_id)
-        goal.save()
-        self.cartridge.pop(msg.chat.id)
-        self.tg_client.send_message(
-            msg.chat.id,
-            f'Готово! цель {msg.text} для категории {cat} успешно сохранена\n'
-            f'Для продолжения наберите /start'
-        )
+        if msg.text == '/cansel':
+            self.cartridge.pop(msg.chat.id)
+            self.tg_client.send_message(
+                msg.chat.id,
+                'Действие отменено\n'
+                'Для продолжения наберите /start'
+            )
+        else:
+            cat = self.cartridge[msg.chat.id]['choice_cat']
+            cats = self.cartridge[msg.chat.id]['cats']
+            user_id = self.cartridge[msg.chat.id]['user_id']
+            goal = Goal(title=msg.text, category_id=cats[cat], user_id=user_id)
+            goal.save()
+            self.cartridge.pop(msg.chat.id)
+            self.tg_client.send_message(
+                msg.chat.id,
+                f'Готово! цель {msg.text} для категории {cat} успешно сохранена\n'
+                f'Для продолжения наберите /start'
+            )
 
     def handle_create(self, msg: Message):
         """
@@ -60,7 +68,7 @@ class Command(BaseCommand):
             self.cartridge[msg.chat.id]['choice_cat'] = msg.text
             self.tg_client.send_message(
                 msg.chat.id,
-                f'Выбери название'
+                f'Выбери заголовок или введи /cansel'
             )
             self.cartridge[msg.chat.id]['handle'] = self.handle_save
 
@@ -74,7 +82,8 @@ class Command(BaseCommand):
         self.tg_client.send_message(msg.chat.id, 'Hello')
         tg_user, _ = TgUser.objects.get_or_create(chat_id=msg.chat.id)
         if tg_user.user_id is None:
-            self.cartridge[msg.chat.id]['handle'] = self.condition_b
+            data = {'user_id': None, 'handle': self.condition_b}
+            self.cartridge[msg.chat.id] = data
             self.tg_client.send_message(
                 msg.chat.id,
                 'Похоже вы новенький!'

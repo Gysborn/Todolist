@@ -18,7 +18,7 @@ class VerificationView(GenericAPIView):
 
         s.tg_user.user = request.user
         s.tg_user.save()
-        TgClient().send_message(s.tg_user.chat_id, 'Success')
+        TgClient().send_message(s.tg_user.chat_id, 'Success, input /start')
         return Response(self.get_serializer(s.tg_user).data)
 
 
