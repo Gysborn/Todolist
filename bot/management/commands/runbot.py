@@ -78,7 +78,6 @@ class Command(BaseCommand):
         :param msg: объект Message
         :return: None
         """
-        print('handle a')
         self.tg_client.send_message(msg.chat.id, 'Hello')
         tg_user, _ = TgUser.objects.get_or_create(chat_id=msg.chat.id)
         if tg_user.user_id is None:
@@ -109,7 +108,6 @@ class Command(BaseCommand):
         :param msg: объект Message
         :return: None
         """
-        print('handle b')
         tg_user, _ = TgUser.objects.get_or_create(chat_id=msg.chat.id)
         code = tg_user.set_verification_code()
         self.tg_client.send_message(msg.chat.id, f'Your verification code: {code}')
@@ -122,7 +120,6 @@ class Command(BaseCommand):
         :param msg:
         :return: None
         """
-        print('handle c')
         if msg.text == '/cansel':
             d = self.cartridge.pop(msg.chat.id)
             print(d)
