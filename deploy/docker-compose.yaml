@@ -37,8 +37,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-      migrations:
-        condition: service_completed_successfully
+      api:
+        condition: service_started
     env_file: .env
     environment:
       DB_HOST: postgres
