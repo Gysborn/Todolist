@@ -21,7 +21,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/diploma:deep-bot
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/diploma:homework-38
 
   deploy:
     needs: build
