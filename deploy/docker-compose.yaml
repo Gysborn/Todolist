@@ -33,7 +33,7 @@ services:
     command: python manage.py migrate
 
   bot:
-    image: gysborn/diploma:deep-bot
+    image: gysborn/diploma:homework-38
     depends_on:
       postgres:
         condition: service_healthy
