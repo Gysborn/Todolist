@@ -17,7 +17,6 @@ class TgUser(models.Model):
     def set_verification_code(self):
         self.verification_code = self._generate_verification_code()
         self.save(update_fields=('verification_code',))
-        print(f'Код верификации: {self.verification_code}')
         return self.verification_code
 
 
