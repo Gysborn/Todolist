@@ -151,7 +151,7 @@ class Command(BaseCommand):
         else:
             self.tg_client.send_message(
                 msg.chat.id,
-                'А я думала сова!\n Для продолжения наберите /start'
+                'Неизвестная команда!\n Для продолжения наберите /start'
             )
             self.cartridge[msg.chat.id]['handle'] = self.condition_a
 

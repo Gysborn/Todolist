@@ -40,6 +40,7 @@ services:
       api:
         condition: service_started
     env_file: .env
+    restart: always
     environment:
       DB_HOST: postgres
     command: python manage.py runbot
