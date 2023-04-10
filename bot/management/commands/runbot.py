@@ -160,7 +160,7 @@ class Command(BaseCommand):
         Бесконечный цикл, отлова сообщений пользователя
         :param args:
         :param options:
-        :return:
+        :return: None
         """
         offset = 0
         while True:
