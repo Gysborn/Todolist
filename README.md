@@ -1,5 +1,16 @@
-Проект: Планировщик задач на подобе todolist от google
+# Проект: Планировщик задач на подобе todolist от google
+Проект состоит из трех частей и собирается в контейнере
+- Front: на основе образа: sermalenk/skypro-front:lesson-34
+- Back: Текущее django приложение
+- BD: Postgres 15.1-alpine
+## Описание:
+Вэб-приложение позволяющее создавать цели в планировщике задач и отслеживать их выплонение
+с возможностью шерить свою доску другим участникам и получать доступ к публичным доскам других
+участников а так же оставлять комментарии.
 
-стек: (python3.9, Django, Postgres, djangorestframework, psycopg2-binary, python-dotenv, social-auth-core, requests)
+## Cтек:
+(python3.9, Django, Postgres, docker, CI/CD)
 
-как запустить/установить зависимости: pip install -r requirements.txt
+## Kак запустить/установить:
+зависимости: pip install -r requirements.txt
+./manage.py runserver
